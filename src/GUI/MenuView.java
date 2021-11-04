@@ -39,14 +39,14 @@ public class MenuView extends JFrame implements ActionListener {
         menu.setLayout(new GridBagLayout());
         constraints.weightx = 1.0;
         constraints.weighty = 1.0;
-        constraints.gridx = 0;
-        constraints.gridy = 0;
         constraints.fill = GridBagConstraints.BOTH;
+
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+        constraints.anchor = GridBagConstraints.NORTH;
         theme = new JLabel("Please add the name of the player");
-        /* theme.setFont(new Font("Times New Roman", Font.BOLD,30));
-        theme.setBounds(250,100,600,50); */
-        //addElement(theme, 0, 0);
-        addElement(theme, 0,0);
+        theme.setFont(new Font("Times New Roman", Font.BOLD,30)); 
+        addElement(theme, 0, 0);
         this.setContentPane(menu);
     }
 
