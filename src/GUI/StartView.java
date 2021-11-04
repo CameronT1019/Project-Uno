@@ -1,4 +1,3 @@
-package unoproject.src.GUI;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -8,7 +7,11 @@ public class StartView extends JPanel implements ActionListener {
     GridBagConstraints constraints = new GridBagConstraints();
 
     private ImageIcon uno_image;
+    private JButton quit;
+    private JButton playWithFriends;
     private JLabel label1;
+    static JFrame f = new JFrame("UNO");
+    JFrame frame1;
 
     public StartView() {
         setLayout(new GridBagLayout());
@@ -31,13 +34,19 @@ public class StartView extends JPanel implements ActionListener {
         constraints.weightx = 0.5; // make this half the size of the uno image size
         constraints.anchor = GridBagConstraints.CENTER; // center of space
         constraints.insets = new Insets(50, 50, 50, 50); // all around padding of 100 pixels 
-        addElement(new JButton("Play with Friends"), x = 3, y = 0);
+        //addElement(new JButton("Play with Friends"), x = 3, y = 0);
+        playWithFriends = new JButton("Play with Friends");
+        playWithFriends.addActionListener(this);
+        addElement(playWithFriends, 3, 0);
 
         // PLAY WITH BOTS BUTTON
         addElement(new JButton("Play with Bots"), x = 3, y = 1);
 
         // QUIT BUTTON
-        addElement(new JButton("Quit"), x = 3, y = 2);
+        //addElement(new JButton("Quit"), x = 3, y = 2);
+        quit = new JButton("Quit");
+        quit.addActionListener(this);
+        addElement(quit, 3, 2);
 
     }
 
@@ -48,9 +57,11 @@ public class StartView extends JPanel implements ActionListener {
     }
 
     public static void main(String[] args) {
-        JFrame f = new JFrame("UNO");
         f.addWindowListener(new WindowAdapter() {
-            public void windowClosed(WindowEvent e) {System.exit(0);}  
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.exit(0);
+            }
         });
         f.setSize(1000, 1000);
         f.setLocation(1000, 1000);
@@ -60,7 +71,20 @@ public class StartView extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+        if (e.getSource() == quit) {
+            //Directly quit the game.
+            System.exit(0);
+        } else if (e.getSource() == playWithFriends) {
+            //Jumps to the next JFrame.
+            frame1 = new MenuView();
+            frame1.setSize(1000,1000);
+            frame1.setVisible(true);
+            // TODO FIGURE OUT WHY THIS AUTOMATICALLY CLOSES THE NEXT JFRAME
+            //this.dispose();
+          }
     }
+
+
+
+    
 }
