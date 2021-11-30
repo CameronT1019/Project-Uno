@@ -65,13 +65,13 @@ public class NameMenu extends JFrame implements ActionListener {
             new MainMenu();
         }
 
-        /* if (e.getSource() == submitButton) {
+        if (e.getSource() == submitButton) {
             if (nameTextField.getText().equals("")) {
                 new GameMenu("Player");
             } else {
                 new GameMenu(nameTextField.getText());
             }
             this.dispose();
-        } */
+        }
     }
 }
