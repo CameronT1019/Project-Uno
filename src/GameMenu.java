@@ -221,6 +221,7 @@ public class GameMenu extends JFrame implements ActionListener {
         statusPanel.add(statusScrollPane);
         activityPanel.add(activityPanelLabel);
         activityPanel.add(activityScrollPane);
+        this.getRootPane().setDefaultButton(applyButton);
         this.add(panel);
         this.repaint();
 
