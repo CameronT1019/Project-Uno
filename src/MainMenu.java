@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class MainMenu extends JFrame implements ActionListener {
 
     JButton playButton;
@@ -11,6 +12,11 @@ public class MainMenu extends JFrame implements ActionListener {
     JLabel unoLogoLabel;
 
     public MainMenu() {
+ 
+        String filepath = "DarkMusic.wav";
+        MusicGame musicObj = new MusicGame();
+        musicObj.playMusic(filepath);
+        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Main Menu");
         this.setLayout(null);
