@@ -94,6 +94,7 @@ public class GameMenu extends JFrame implements ActionListener {
 
         panel = new JPanel();
         panel.setBounds(0, 0, 1700, 1080);
+        panel.setBackground(Color.DARK_GRAY);
         panel.setLayout(null);
 
         /* JLabel imageHolder = new JLabel();
@@ -114,22 +115,22 @@ public class GameMenu extends JFrame implements ActionListener {
 
         JPanel cardPanel = new JPanel();
         cardPanel.setBounds(0, 1080-300, 1700, 300);
-        cardPanel.setBackground(Color.GRAY);
+        cardPanel.setBackground(Color.BLACK);
         cardPanel.setLayout(null);
 
         JPanel activityPanel = new JPanel();
         activityPanel.setBounds(5, 5, 350, 770);
-        activityPanel.setBackground(Color.GRAY);
+        activityPanel.setBackground(Color.BLACK);
         activityPanel.setLayout(null);
 
         JPanel playersPanel = new JPanel();
         playersPanel.setBounds(1700-370, 5, 350, 770/2);
-        playersPanel.setBackground(Color.GRAY);
+        playersPanel.setBackground(Color.BLACK);
         playersPanel.setLayout(null);
 
         JPanel statusPanel = new JPanel();
         statusPanel.setBounds(1700-370, (770/2)+10, 350, (770/2)-5);
-        statusPanel.setBackground(Color.GRAY);
+        statusPanel.setBackground(Color.BLACK);
         statusPanel.setLayout(null);
 
         playerNameLabel = new JLabel();
