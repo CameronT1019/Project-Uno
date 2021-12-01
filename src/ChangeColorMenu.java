@@ -32,7 +32,9 @@ public class ChangeColorMenu extends JFrame implements ActionListener {
         redButton.setBounds(20-3, 100, 180, 130);
         redButton.setFocusPainted(false);
         redButton.setBackground(Color.RED);
-        redButton.setForeground(Color.WHITE);
+        redButton.setOpaque(true);
+        redButton.setBorderPainted(false);
+        redButton.setForeground(Color.BLACK);
         redButton.setFont(new Font("Arial", Font.BOLD, 16));
         redButton.addActionListener(this);
 
@@ -41,7 +43,9 @@ public class ChangeColorMenu extends JFrame implements ActionListener {
         greenButton.setBounds(210-3, 100, 180, 130);
         greenButton.setFocusPainted(false);
         greenButton.setBackground(Color.GREEN);
-        greenButton.setForeground(Color.WHITE);
+        greenButton.setOpaque(true);
+        greenButton.setBorderPainted(false);
+        greenButton.setForeground(Color.BLACK);
         greenButton.setFont(new Font("Arial", Font.BOLD, 16));
         greenButton.addActionListener(this);
 
@@ -49,8 +53,10 @@ public class ChangeColorMenu extends JFrame implements ActionListener {
         blueButton.setText("BLUE");
         blueButton.setBounds(20-3, 100+140, 180, 130);
         blueButton.setFocusPainted(false);
-        blueButton.setBackground(new Color(0, 153, 255));
-        blueButton.setForeground(Color.WHITE);
+        blueButton.setBackground(Color.BLUE);
+        blueButton.setForeground(Color.BLACK);
+        blueButton.setOpaque(true);
+        blueButton.setBorderPainted(false);
         blueButton.setFont(new Font("Arial", Font.BOLD, 16));
         blueButton.addActionListener(this);
 
@@ -58,8 +64,10 @@ public class ChangeColorMenu extends JFrame implements ActionListener {
         yellowButton.setText("YELLOW");
         yellowButton.setBounds(210-3, 100+140, 180, 130);
         yellowButton.setFocusPainted(false);
-        yellowButton.setBackground(new Color(255, 230, 0));
-        yellowButton.setForeground(Color.WHITE);
+        yellowButton.setBackground(Color.YELLOW);
+        yellowButton.setForeground(Color.BLACK);
+        yellowButton.setOpaque(true);
+        yellowButton.setBorderPainted(false);
         yellowButton.setFont(new Font("Arial", Font.BOLD, 16));
         yellowButton.addActionListener(this);
 
