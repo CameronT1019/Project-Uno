@@ -23,7 +23,7 @@ public class LeaderBoardMenu extends JFrame implements ActionListener {
     ArrayList<Integer> sortedScore;
 
     public LeaderBoardMenu(ArrayList<Player> players) {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("UNO");
         this.setLayout(null);
         this.setSize(640, 480);

@@ -8,8 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -84,7 +82,7 @@ public class GameMenu extends JFrame implements ActionListener {
         buttons[12] = cardButton13;
         buttons[13] = cardButton14;
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("UNO");
         this.setLayout(null);
         this.setSize(1700, 1080);
@@ -96,11 +94,6 @@ public class GameMenu extends JFrame implements ActionListener {
         panel.setBounds(0, 0, 1700, 1080);
         panel.setBackground(Color.DARK_GRAY);
         panel.setLayout(null);
-
-        /* JLabel imageHolder = new JLabel();
-        imageHolder.setIcon(makeImageIcon("resources/image.jpeg"));
-
-        panel.add(imageHolder); */
         
 
         applyButton = new JButton();
@@ -229,7 +222,7 @@ public class GameMenu extends JFrame implements ActionListener {
         game = new Game(name);
         applyPressed = false;
         drawPressed = false;
-        timer = new Timer(4000, (e)->tick());
+        timer = new Timer(4000, e->tick());
 
         dealCards();
         startDiscardPile();
@@ -362,7 +355,7 @@ public class GameMenu extends JFrame implements ActionListener {
         checkWin();
         int topDiscard = game.deck.discardPile.size()-1;
         if (game.deck.discardPile.get(topDiscard).color.equals("wild") && game.deck.discardPile.get(topDiscard).value.equals("pick_four")) {
-            if (!game.deck.discardPile.get(topDiscard).hasPlayed) {
+            if (Boolean.FALSE.equals(game.deck.discardPile.get(topDiscard).hasPlayed)) {
                 activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name + " has to draw 4 cards");
                 for (int i = 0; i < 4; i++) {
                     game.players.get(game.currentPlayer).draw(game.deck);
@@ -375,7 +368,7 @@ public class GameMenu extends JFrame implements ActionListener {
                 }
             }
         } else if (game.deck.discardPile.get(topDiscard).value.equals("picker")) {
-            if (!game.deck.discardPile.get(topDiscard).hasPlayed) {
+            if (Boolean.FALSE.equals(game.deck.discardPile.get(topDiscard).hasPlayed)) {
                 activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name + " has to draw 2 cards");
                 for (int i = 0; i < 2; i++) {
                     game.players.get(game.currentPlayer).draw(game.deck);
@@ -389,7 +382,7 @@ public class GameMenu extends JFrame implements ActionListener {
                 }
             }
         } else if (game.deck.discardPile.get(topDiscard).value.equals("reverse")) {
-            if (!game.deck.discardPile.get(topDiscard).hasPlayed) {
+            if (Boolean.FALSE.equals(game.deck.discardPile.get(topDiscard).hasPlayed)) {
                 if (game.direction == Game.gameDirection.CLOCKWISE) {
                     game.direction = Game.gameDirection.COUNTERCLOCKWISE;
                     activityTextArea.append("\n - " + "game direction is changed to counter clockwise");
@@ -413,7 +406,7 @@ public class GameMenu extends JFrame implements ActionListener {
                 }
             }
         } else if (game.deck.discardPile.get(topDiscard).value.equals("skip")) {
-            if (!game.deck.discardPile.get(topDiscard).hasPlayed) {
+            if (Boolean.FALSE.equals(game.deck.discardPile.get(topDiscard).hasPlayed)) {
                 activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name + " has been skipped and the next person starts");
                 game.deck.discardPile.get(topDiscard).hasPlayed = true;
                 incrementCurrentPlayer();
@@ -570,9 +563,9 @@ public class GameMenu extends JFrame implements ActionListener {
         }
 
         // here we are differentiating our numerical cards and special cards
-        HashMap<Integer, Integer> validCards = new HashMap<Integer, Integer>();
-        ArrayList<Integer> validSpecial = new ArrayList<Integer>();
-        ArrayList<Integer> wild = new ArrayList<Integer>();
+        HashMap<Integer, Integer> validCards = new HashMap<>();
+        ArrayList<Integer> validSpecial = new ArrayList<>();
+        ArrayList<Integer> wild = new ArrayList<>();
         for (int i = 0; i < game.players.get(game.currentPlayer).hand.size(); i++) {
             if (game.players.get(game.currentPlayer).hand.get(i).color.equals(game.validColor)
                     || game.players.get(game.currentPlayer).hand.get(i).value.equals(game.validValue)
@@ -630,9 +623,10 @@ public class GameMenu extends JFrame implements ActionListener {
                 case "yellow":
                     yellow += 1;
                     break;
+                default:
             }
         }
-        HashMap<Integer, String> numColors = new HashMap<Integer, String>();
+        HashMap<Integer, String> numColors = new HashMap<>();
         numColors.put(red, "red");
         numColors.put(green, "green");
         numColors.put(blue, "blue");

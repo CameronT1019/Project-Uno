@@ -18,7 +18,7 @@ public class MusicGame
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioInput);
                 clip.start();
-                clip.loop(clip.LOOP_CONTINUOUSLY);
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
             }
             else
             {

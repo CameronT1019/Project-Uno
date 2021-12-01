@@ -17,7 +17,7 @@ public class MainMenu extends JFrame implements ActionListener {
         MusicGame musicObj = new MusicGame();
         musicObj.playMusic(filepath);
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("Main Menu");
         this.setLayout(null);
         this.setSize(640, 480);
