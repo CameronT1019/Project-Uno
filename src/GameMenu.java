@@ -273,7 +273,7 @@ public class GameMenu extends JFrame implements ActionListener {
         } else if (e.getSource() == applyButton) {
             applyPressed = true;
             if (((game.validColor.equals("any") && game.validValue.equals("any")) ||game.mainPlayer.hand.get(game.cardIndex).color.equals(game.validColor) || game.mainPlayer.hand.get(game.cardIndex).value.equals(game.validValue) || game.mainPlayer.hand.get(game.cardIndex).color.equals("wild"))) {
-                activityTextArea.append("\n - " + game.mainPlayer.name + " has picked " + game.mainPlayer.hand.get(game.cardIndex).color + " " + game.mainPlayer.hand.get(game.cardIndex).value);
+                activityTextArea.append("\n - " + game.mainPlayer.name + " has picked " + game.mainPlayer.hand.get(game.cardIndex).color.toUpperCase() + " " + game.mainPlayer.hand.get(game.cardIndex).value);
                 if (!game.mainPlayer.hand.get(game.cardIndex).color.equals("wild") || game.mainPlayer.hand.get(game.cardIndex).color.equals("any")) {
                     setValid();
                     validCardPop();
@@ -294,7 +294,7 @@ public class GameMenu extends JFrame implements ActionListener {
             drawPressed = true;
             game.players.get(game.currentPlayer).draw(game.deck);
             int topCard = game.players.get(game.currentPlayer).hand.size()-1;
-            activityTextArea.append("\n - " + game.mainPlayer.name + " has drawn from the draw pile and got a " + game.mainPlayer.hand.get(topCard).color + " " + game.mainPlayer.hand.get(topCard).value);
+            activityTextArea.append("\n - " + game.mainPlayer.name + " has drawn from the draw pile and got a " + game.mainPlayer.hand.get(topCard).color.toUpperCase() + " " + game.mainPlayer.hand.get(topCard).value);
             if (game.players.get(game.currentPlayer).hand.get(topCard).color.equals(game.validColor) || game.players.get(game.currentPlayer).hand.get(topCard).value.equals(game.validValue)) {
                 activityTextArea.append("\n - " + "Seems that that card picked from the pile is a valid card. That card will be played");
                 Card validCard = new Card(game.players.get(game.currentPlayer).hand.get(topCard).color, game.players.get(game.currentPlayer).hand.get(topCard).value);
@@ -544,14 +544,14 @@ public class GameMenu extends JFrame implements ActionListener {
             Card validCard = new Card(game.players.get(game.currentPlayer).hand.get(indexNum).color, game.players.get(game.currentPlayer).hand.get(indexNum).value);
             game.players.get(game.currentPlayer).removeCard(indexNum);
             game.deck.discardPile.add(validCard);
-            activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name + " has picked " + game.deck.discardPile.get(game.deck.discardPile.size()-1).color + " " + game.deck.discardPile.get(game.deck.discardPile.size()-1).value);
+            activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name + " has picked " + game.deck.discardPile.get(game.deck.discardPile.size()-1).color.toUpperCase() + " " + game.deck.discardPile.get(game.deck.discardPile.size()-1).value);
             incrementCurrentPlayer();
         } else {
             game.players.get(game.currentPlayer).draw(game.deck);
             int topCard = game.players.get(game.currentPlayer).hand.size()-1;
             activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name + " does not have a valid card in their hand. The player will now draw a card in the draw pile.");
             if (game.players.get(game.currentPlayer).hand.get(topCard).color.equals(game.validColor) || game.players.get(game.currentPlayer).hand.get(topCard).value.equals(game.validValue)) {
-                activityTextArea.append("\n - " + "Seems that the " + game.players.get(game.currentPlayer).hand.get(topCard).color + " " + game.players.get(game.currentPlayer).hand.get(topCard).value + " that " + game.players.get(game.currentPlayer).name  + " picked from the draw pile is valid card. That card will be played");
+                activityTextArea.append("\n - " + "Seems that the " + game.players.get(game.currentPlayer).hand.get(topCard).color.toUpperCase() + " " + game.players.get(game.currentPlayer).hand.get(topCard).value + " that " + game.players.get(game.currentPlayer).name  + " picked from the draw pile is valid card. That card will be played");
                 Card validCard = new Card(game.players.get(game.currentPlayer).hand.get(topCard).color, game.players.get(game.currentPlayer).hand.get(topCard).value);
                 game.players.get(game.currentPlayer).removeCard(topCard);
                 game.deck.discardPile.add(validCard);
