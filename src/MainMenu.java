@@ -13,7 +13,7 @@ public class MainMenu extends JFrame implements ActionListener {
 
     public MainMenu() {
  
-        String filepath = "DarkMusic.wav";
+        String filepath = "resources/DarkMusic.wav";
         MusicGame musicObj = new MusicGame();
         musicObj.playMusic(filepath);
         
@@ -25,7 +25,7 @@ public class MainMenu extends JFrame implements ActionListener {
         this.setResizable(false);
         this.setVisible(true);
 
-        unoLogo = new ImageIcon(new ImageIcon("uno_logo.png").getImage().getScaledInstance(640/2, 480/2, Image.SCALE_DEFAULT));
+        unoLogo = new ImageIcon(new ImageIcon("resources/uno_logo.png").getImage().getScaledInstance(640/2, 480/2, Image.SCALE_DEFAULT));
         unoLogoLabel = new JLabel();
         unoLogoLabel.setIcon(unoLogo);
         unoLogoLabel.setBounds(160, 10, 640/2, 480/2);
@@ -55,6 +55,8 @@ public class MainMenu extends JFrame implements ActionListener {
 
         this.add(panel);
         panel.add(playButton);
+        this.getRootPane().setDefaultButton(playButton);
+        playButton.requestFocus();
         panel.add(closeButton);
         panel.add(unoLogoLabel);
         this.repaint();

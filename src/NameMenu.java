@@ -55,7 +55,7 @@ public class NameMenu extends JFrame implements ActionListener {
         panel.add(nameTextField);
         panel.add(submitButton);
         this.getRootPane().setDefaultButton(submitButton);
-        submitButton.requestFocus();
+        nameTextField.requestFocus();
         panel.add(cancelButton);
         this.repaint();
     }

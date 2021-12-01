@@ -95,6 +95,11 @@ public class GameMenu extends JFrame implements ActionListener {
         panel = new JPanel();
         panel.setBounds(0, 0, 1700, 1080);
         panel.setLayout(null);
+
+        /* JLabel imageHolder = new JLabel();
+        imageHolder.setIcon(makeImageIcon("resources/image.jpeg"));
+
+        panel.add(imageHolder); */
         
 
         applyButton = new JButton();
@@ -160,7 +165,7 @@ public class GameMenu extends JFrame implements ActionListener {
         drawButton.addActionListener(this);
         drawButton.setBackground(Color.WHITE);
         drawButton.setBounds((1700/2)-420, 100, 390, 546);
-        drawButton.setIcon(new ImageIcon("large/card_back_alt_large.png"));
+        drawButton.setIcon(new ImageIcon("resources/large/card_back_alt_large.png"));
         Border emptyBorder = BorderFactory.createEmptyBorder();
         drawButton.setBorder(emptyBorder);
 
@@ -273,9 +278,9 @@ public class GameMenu extends JFrame implements ActionListener {
                     updateDiscardImage();
                 } else {
                     if (game.mainPlayer.hand.get(game.cardIndex).value.equals("color_changer")) {
-                        discardLabel.setIcon(new ImageIcon("large/wild_colora_changer_large.png"));
+                        discardLabel.setIcon(new ImageIcon("resources/large/wild_colora_changer_large.png"));
                     } else if (game.mainPlayer.hand.get(game.cardIndex).value.equals("pick_four")) {
-                        discardLabel.setIcon(new ImageIcon("large/wild_pick_four_large.png"));
+                        discardLabel.setIcon(new ImageIcon("resources/large/wild_pick_four_large.png"));
                     }
                     validCardPop();
                 }
@@ -435,11 +440,11 @@ public class GameMenu extends JFrame implements ActionListener {
 
     void updateCardImage() {
         for (int i = 0; i < 14; i++) {
-            buttons[i].setIcon(new ImageIcon("small/card_back_alt.png"));
+            buttons[i].setIcon(new ImageIcon("resources/small/card_back_alt.png"));
             buttons[i].setEnabled(false);
         }
         for (int i = 0; i < game.mainPlayer.hand.size(); i++) {
-            buttons[i].setIcon(new ImageIcon("small/"+game.mainPlayer.hand.get(i).color+"_"+game.mainPlayer.hand.get(i).value+".png"));
+            buttons[i].setIcon(new ImageIcon("resources/small/"+game.mainPlayer.hand.get(i).color+"_"+game.mainPlayer.hand.get(i).value+".png"));
             buttons[i].setEnabled(true);
         }
     }
@@ -502,9 +507,9 @@ public class GameMenu extends JFrame implements ActionListener {
     void updateDiscardImage() {
         int topDiscard = game.deck.discardPile.size()-1;
         if (game.deck.discardPile.get(topDiscard).color.equals("wild") && game.deck.discardPile.get(topDiscard).value.equals("color_changer")) {
-            discardLabel.setIcon(new ImageIcon("large/"+game.deck.discardPile.get(topDiscard).color+"_colora_changer_large.png"));
+            discardLabel.setIcon(new ImageIcon("resources/large/"+game.deck.discardPile.get(topDiscard).color+"_colora_changer_large.png"));
         } else {
-            discardLabel.setIcon(new ImageIcon("large/"+game.deck.discardPile.get(topDiscard).color+"_"+game.deck.discardPile.get(topDiscard).value+"_"+"large.png"));
+            discardLabel.setIcon(new ImageIcon("resources/large/"+game.deck.discardPile.get(topDiscard).color+"_"+game.deck.discardPile.get(topDiscard).value+"_"+"large.png"));
         }
         panel.repaint();
         panel.revalidate();
