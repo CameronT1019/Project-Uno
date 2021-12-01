@@ -1,4 +1,5 @@
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
 import javax.swing.border.Border;
@@ -7,6 +8,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class GameMenu extends JFrame implements ActionListener {
     JButton cardButton1;
@@ -89,6 +95,7 @@ public class GameMenu extends JFrame implements ActionListener {
         panel = new JPanel();
         panel.setBounds(0, 0, 1700, 1080);
         panel.setLayout(null);
+        
 
         applyButton = new JButton();
         applyButton.setFocusPainted(false);
@@ -129,19 +136,19 @@ public class GameMenu extends JFrame implements ActionListener {
         activityPanelLabel = new JLabel();
         activityPanelLabel.setText("Activity Panel");
         activityPanelLabel.setFont(new Font("Arial Black", Font.PLAIN, 35));
-        activityPanelLabel.setForeground(Color.WHITE);
+        activityPanelLabel.setForeground(Color.RED);
         activityPanelLabel.setBounds(350/2-140, 0, 350, 50);
 
         playersPanelLabel = new JLabel();
         playersPanelLabel.setText("Players");
         playersPanelLabel.setFont(new Font("Arial Black", Font.PLAIN, 35));
-        playersPanelLabel.setForeground(Color.WHITE);
+        playersPanelLabel.setForeground(Color.BLUE);
         playersPanelLabel.setBounds(350/2-55, 0, 350, 50);
 
         statusPanelLabel = new JLabel();
         statusPanelLabel.setText("Status");
         statusPanelLabel.setFont(new Font("Arial Black", Font.PLAIN, 35));
-        statusPanelLabel.setForeground(Color.WHITE);
+        statusPanelLabel.setForeground(Color.GREEN);
         statusPanelLabel.setBounds(350/2-55, 0, 350, 50);
 
 
@@ -163,7 +170,7 @@ public class GameMenu extends JFrame implements ActionListener {
         activityTextArea.setEditable(false);
         activityTextArea.setLineWrap(true);
         activityTextArea.setWrapStyleWord(true);
-        activityTextArea.setText(" -" + " Welcome to UNO! This panel will show every move a player makes.");
+        activityTextArea.setText(" -" + " Welcome to UNO! This panel will show the moves a player makes.");
 
         activityScrollPane = new JScrollPane(activityTextArea);
         activityScrollPane.setBounds(7, 50, 335, 710);
@@ -560,8 +567,12 @@ public class GameMenu extends JFrame implements ActionListener {
         ArrayList<Integer> validSpecial = new ArrayList<Integer>();
         ArrayList<Integer> wild = new ArrayList<Integer>();
         for (int i = 0; i < game.players.get(game.currentPlayer).hand.size(); i++) {
-            if (game.players.get(game.currentPlayer).hand.get(i).color.equals(game.validColor) || game.players.get(game.currentPlayer).hand.get(i).value.equals(game.validValue) || game.players.get(game.currentPlayer).hand.get(i).color.equals("wild")) {
-                if (game.players.get(game.currentPlayer).hand.get(i).value.equals("picker") || game.players.get(game.currentPlayer).hand.get(i).value.equals("reverse") || game.players.get(game.currentPlayer).hand.get(i).value.equals("skip")) {
+            if (game.players.get(game.currentPlayer).hand.get(i).color.equals(game.validColor)
+                    || game.players.get(game.currentPlayer).hand.get(i).value.equals(game.validValue)
+                    || game.players.get(game.currentPlayer).hand.get(i).color.equals("wild")) {
+                if (game.players.get(game.currentPlayer).hand.get(i).value.equals("picker")
+                        || game.players.get(game.currentPlayer).hand.get(i).value.equals("reverse")
+                        || game.players.get(game.currentPlayer).hand.get(i).value.equals("skip")) {
                     validSpecial.add(i);
                 } else if (game.players.get(game.currentPlayer).hand.get(i).color.equals("wild")) {
                     wild.add(i);
@@ -639,7 +650,8 @@ public class GameMenu extends JFrame implements ActionListener {
                 return validSpecial.get(0);
             } else if (!wild.isEmpty()) {
                 // here we would like to analyze the hand for the most frequent color that appears
-                activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name + " has changed the color to " + frequentColor);
+                activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name
+                        + " has changed the color to " + frequentColor);
                 game.validColor = frequentColor;
                 game.validValue = "none";
                 return wild.get(0);
@@ -648,7 +660,8 @@ public class GameMenu extends JFrame implements ActionListener {
             // our priorities are switched once the cards start getting low because not we want to start getting rid of our high point value cards
             // which are specials and wilds.
             if (!wild.isEmpty()) {
-                activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name + " has changed the color to " + frequentColor);
+                activityTextArea.append("\n - " + game.players.get(game.currentPlayer).name
+                        + " has changed the color to " + frequentColor);
                 game.validColor = frequentColor;
                 game.validValue = "none";
                 return wild.get(0);
@@ -664,4 +677,14 @@ public class GameMenu extends JFrame implements ActionListener {
         }
         return 0;
     }
+    
+    public static ImageIcon makeImageIcon(String filename) {
+    BufferedImage myPicture = null;
+    try {
+        myPicture = ImageIO.read(new File("resources/" + filename));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return new ImageIcon(myPicture);
+}
 }
