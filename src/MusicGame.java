@@ -3,7 +3,6 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.swing.JOptionPane;
 
 public class MusicGame 
 {
@@ -20,9 +19,6 @@ public class MusicGame
                 clip.open(audioInput);
                 clip.start();
                 clip.loop(clip.LOOP_CONTINUOUSLY);
-                
-                JOptionPane.showMessageDialog(null, "Welcome to UNO!");
-                
             }
             else
             {
