@@ -9,7 +9,7 @@ public class InvalidMenu extends JFrame implements ActionListener {
     JButton okButton;
 
     public InvalidMenu() {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle("UNO");
         this.setLayout(null);
         this.setSize(490, 150);
